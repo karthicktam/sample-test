@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="165px" height="149px" viewBox="0 0 165 149" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>Empty-hook</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Webhook" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Creating-hook-2-V2" transform="translate(-820.000000, -260.000000)">
+            <g id="Empty-hook" transform="translate(820.000000, 260.000000)">
+                <path d="M0,30.4870318 L96,11 L96,135.478386 C81.3635108,134.935958 66.0078061,135.796821 49.9328859,138.060976 C33.8579656,140.325131 17.2136703,143.971472 0,149 L0,30.4870318 Z" id="Rectangle-62" fill="#D1EFE9" fill-rule="nonzero"></path>
+                <rect id="Rectangle-103" stroke="#2B4D03" stroke-width="2" x="38" y="26" width="126" height="89" rx="5"></rect>
+                <path d="M38,94 L164,94" id="Line-10" stroke="#2B4D03" stroke-width="2" stroke-linecap="square"></path>
+                <ellipse id="Oval-3" fill="#F8E71C" cx="99.5" cy="105" rx="5.5" ry="5"></ellipse>
+                <polygon id="Path-11" stroke="#2B4D03" stroke-width="2" points="94.5714286 115 86 127 114 127 107.5 115"></polygon>
+                <path d="M137.5,0 C127.875,0 120,7.425 120,16.5 C120,25.575 127.875,33 137.5,33 C147.125,33 155,25.575 155,16.5 C155,7.425 147.125,0 137.5,0 Z M146,21.7142857 L143.571429,24 L137.5,18.2857143 L131.428571,24 L129,21.7142857 L135.071429,16 L129,10.2857143 L131.428571,8 L137.5,13.7142857 L143.571429,8 L146,10.2857143 L139.928571,16 L146,21.7142857 Z" id="Shape" fill="#00DA77" fill-rule="nonzero"></path>
+                <path d="M117.728073,74.7828125 L100.665615,44.7476562 C100.426113,44.3179687 99.9801432,44 99.501139,44 C99.0138762,44 98.5679068,44.3179687 98.3366635,44.7476562 L81.2742054,74.7828125 C81.042962,75.2125 80.8777882,75.9 81.1172903,76.3210938 C81.3567923,76.7421875 81.794503,77 82.2735072,77 L116.720512,77 C117.199516,77 117.637227,76.7421875 117.876729,76.3210938 C118.12449,75.9 117.959316,75.2039063 117.728073,74.7828125 Z M103,74 L97,74 L97,69 L103,69 L103,74 Z M103,66 L97,66 L97,53 L103,53 L103,66 Z" id="Shape" fill="#2B4D03" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

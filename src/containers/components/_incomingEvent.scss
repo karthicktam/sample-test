@@ -1,0 +1,139 @@
+@import "../../assets/scss/variables.scss";
+
+.incoming-event {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  width: 70%;
+  height: auto;
+  margin-left: 100px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+
+  &:hover {
+    background-color: #f1f1f1;
+  }
+  &__tag {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+    background-color: #1ab494;
+  }
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__inner-flex {
+    display: flex;
+  }
+  &__radio-section {
+    width: 70px;
+    align-self: center;
+  }
+  &__radio {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin: 0 20px;
+    background-color: #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  h4 {
+    display: inline-flex;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    font-weight: bolder;
+  }
+  &__description {
+    margin-top: 0px;
+    font-size: 10pt;
+    margin-bottom: 15px;
+  }
+  &__view-json {
+    align-self: center;
+    justify-self: center;
+  }
+  &__button {
+    display: block;
+    margin: 0px auto 10px;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+  } // added by me
+}
+
+input[type="radio"] {
+  position: absolute;
+  visibility: hidden;
+}
+input[type="radio"]:checked ~ .incoming-event {
+  background-color: rgb(189, 244, 236);
+  transition: 0.4s ease-in-out;
+  border: 1px solid $primary-green-1;
+  .incoming-event__radio {
+    background-color: $primary-green-1;
+  }
+}
+
+// ------------------------------------------------------------------------>>
+
+// =============================MEDIA-QUERY==================================
+
+// ------------------------------------------------------------------------>>
+
+@media screen and (max-width: 730px) {
+  .incoming-event {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+.sources-details
+{
+  display: grid;
+  grid-template-columns: 25% 75%;
+  height: 97vh;
+}
+.incoming-section_heading__h1
+{
+  margin: 0px;
+  font-size: 22px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+.incoming-section_heading__p
+{
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  margin-top: 0px;
+  margin-bottom: 50px;
+  color: #647A93;
+}
+.incoming-event__button
+{
+  background-color: #1ab394;
+  color: #fff;
+  font-weight: 500;
+  font-size: 15px;
+  border-radius: 5px;
+}
+.incoming-event__button:hover
+{
+  background-color: #49C78B;
+  color: #fff;
+  font-weight: 500;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}

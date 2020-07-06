@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="25px" viewBox="0 0 30 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>play-icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Webhook" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Import-Hook-All-design-V2" transform="translate(-1114.000000, -17.000000)">
+            <g id="play-icon" transform="translate(1114.000000, 17.000000)">
+                <rect id="Rectangle-38" fill="#698289" x="0" y="0" width="30" height="25" rx="5"></rect>
+                <polygon id="Triangle" fill="#BDF4EC" points="21 12.5 11 20 11 5"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

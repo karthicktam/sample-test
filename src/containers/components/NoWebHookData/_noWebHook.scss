@@ -1,0 +1,54 @@
+@import "../../../assets/scss/variables.scss";
+
+.nodatacontainer {
+  padding: 78px 50px 20px 50px;
+  &__mapping-data1 {
+    background-color: white;
+    width: 100%;
+    min-height: 440px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    text-align: center;
+  }
+  &__title {
+    font-size: $primary-heading-1;
+    font-weight: 400;
+    margin: 5px;
+  }
+  &__text {
+    font-size: $tertiary-heading-1;
+    font-weight: 400;
+    margin: 10px 5px 5px 5px;
+  }
+  &__nodatasubmit {
+    margin: 20px;
+    &--flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  &__input-element {
+    color: $primary-green-1;
+  }
+  &__loader {
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    border: {
+      width: 5px;
+      style: solid;
+      radius: 50%;
+      color: $primary-green-1 transparent $primary-green-1 transparent;
+    }
+    animation: nodata_loader 1.2s linear infinite;
+  }
+}
+@keyframes nodata_loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

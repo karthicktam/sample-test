@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Webhook" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Final-Empty-Webhook-screen-V2" transform="translate(-17.000000, -260.000000)" fill="#4B615D" fill-rule="nonzero">
+            <g id="Group" transform="translate(17.000000, 260.000000)">
+                <path d="M20,6.5 C20,10.0898509 16.8659932,13 13,13 C9.13400675,13 6,10.0898509 6,6.5 C6,2.91014913 9.13400675,0 13,0 C16.8659932,0 20,2.91014913 20,6.5 Z" id="Shape"></path>
+                <path d="M12.4996504,12 C10.7136863,12 9.01121647,12.3497 7.47349724,12.975 C3.43780594,14.6156 0.511314369,18.1711 0,22.4 C0,23.8365 1.16486252,25 2.70971441,25 L22.2895863,25 C23.8349976,25 25,23.8365 25,22.4 C24.4881262,18.1711 21.5609354,14.6156 17.5260832,12.975 C15.9876647,12.3497 14.2856144,12 12.4996504,12 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

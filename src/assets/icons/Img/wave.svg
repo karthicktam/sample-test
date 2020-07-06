@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="390px" height="18px" viewBox="0 0 390 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Path 7</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFA600" offset="0%"></stop>
+            <stop stop-color="#FF6D00" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Webhook" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="all-sources-screen-1" transform="translate(-132.000000, -457.000000)" fill="url(#linearGradient-1)">
+            <path d="M132,475 C156.437201,465.484175 177.491276,460.231313 195.162225,459.241414 C221.668649,457.756566 234.040299,468.166568 272.655375,467.120707 C311.270452,466.074846 317.184612,457.437106 340.75997,457.014126 C356.476875,456.73214 396.097986,460.671903 459.623302,468.833415 C463.438207,470.170753 466.101811,471.198517 467.614114,471.916707 C469.126418,472.634897 472.289447,473.491367 477.103204,474.486118 C545.321803,474.374794 542.158773,474.374794 467.614114,474.486118 C393.069455,474.597442 281.198084,474.768736 132,475 Z" id="Path-7"></path>
+        </g>
+    </g>
+</svg>
