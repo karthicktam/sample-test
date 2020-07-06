@@ -21,11 +21,19 @@ class ConfigSample extends Component {
 
         let sampleRecords = eventList;
 
+        let productList = {
+            "Default data": "Default data",
+            "Facebook data": "Facebook data",
+            "Triger live Data": "Triger live Data"
+        };
+
         return (
             <IncomingData 
                 // sampleRecords={this.props.sampleRecords}
                 sampleRecords={sampleRecords}
                 eventList={eventList}
+                productList={productList}
+                selectedProduct={"Default data"}
                 // onNext={this.onNext} 
                 // eventList={this.formatDate()} 
                 // isLoading={this.props.fetchSample} 

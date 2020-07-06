@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-
+import "./_incomingData.scss";
 import IncomingEvent from "./IncomingEvent";
 import NoWebHookData from "./NoWebHookData/NoWebHookData";
 import { Link } from "react-router-dom";
+
+import Testing from "../../components/cl-map-dropdown/Testing";
 
 class Incomingdata extends Component {
   constructor(props) {
@@ -121,6 +123,17 @@ class Incomingdata extends Component {
                 </div>
               </div>
 
+              <div>
+                <Testing
+                  listData={this.props.productList}
+                  value={this.props.selectedProduct}
+                  name="Select a product"
+                  className="boxshadow__searchsearchbox"
+                  onChange={this.onProductSelect}
+                  // selectedProperty={this.props.selectedProperty} // newly added
+                />
+              </div>
+
               <div className="source-section_action">
                 <div className="source-section_action_dropdown">
                   {/* <input type="text" className="source-dropdown" placeholder="All"></input> */}
@@ -138,6 +151,15 @@ class Incomingdata extends Component {
                     </span>
                   ) : null}
                 </div>
+
+                <span style={{fontSize: '3em'}}>
+                  <img
+                    src="../../assets/icons/filter.svg"
+                    alt="Filter"
+                    style={{height: "100px"}}
+                  />
+                  {/*<i className="fas fa-sort-alpha-down"></i>*/}
+                </span>
               </div> {/* process */}
 
               <div className="incoming-data__sbt-btn">

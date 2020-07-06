@@ -1,0 +1,303 @@
+// @import 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+
+// @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+
+@import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
+
+@font-face {
+    font-family: "FontAwesome";
+    font-weight: normal;
+    font-style : normal;
+           src : url("//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?v=4.3.0");
+           src : url("//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"),
+                 url("//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"),
+                 url("//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"),
+                 url("//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"),
+                 url("//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
+  }
+
+[class*="fontawesome-"]:before {
+    font-family: 'fontawesome', sans-serif;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.select-search-box {
+    // width: 204px;
+    width: 100%;
+    position: relative;
+    // margin-bottom: 20px;
+    background: #fff;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+    .select-search-box--multiple {
+        border-radius: 4px;
+        box-shadow: 0 7px 14px 0 rgba(50, 50, 93, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);
+        overflow: hidden;
+    }
+
+    .select-search-box::after {
+        font-family: fontawesome;
+        content: "\f078";
+        position: absolute;
+        top: -2px;
+        right: 0;
+        width: 40px;
+        text-align: center;
+        line-height: 50px;
+        color: #647A93;
+        z-index: 1;
+    }
+
+    .select-search-box--multiple::after {
+        content:"\f002";
+    }
+
+    .select-search-box--input::after {
+        display: none !important;
+    }
+
+    .select-search-box__out {
+        display: none;
+    }
+
+    .select-search-box__search {
+        display: block;
+        width: 100%;
+        height: 48px;
+        border: none;
+        background: none;
+        outline: none;
+        font-size: 13px;
+        padding: 0 20px;
+        color: #222f3e;
+        -webkit-appearance: none;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 2;
+        cursor: pointer;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        line-height: 50px;
+        // box-shadow: 0 7px 14px 0 rgba(50, 50, 93, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);
+        border: 1px solid #000;
+        border-radius: 3px;
+        margin-bottom: 10px;
+    }
+
+    input.select-search-box__search {
+        line-height: 1;
+    }
+
+    .select-search-box--multiple .select-search-box__search {
+        box-shadow: none;
+    }
+
+    .select-search-box--input .select-search-box__search {
+        cursor: text;
+    }
+
+        .select-search-box__search:focus {
+            cursor: text;
+        }
+
+        .select-search-box__search--placeholder {
+            font-style: italic;
+            font-weight: normal;
+            font-size: 13px !important;
+            color: #000 !important; 
+        }
+        .select-search-box__search::placeholder {
+            font-style: italic;
+            font-weight: normal;
+            font-size: 14px !important;
+            color: #ccc !important; 
+        }
+
+    .select-search-box input::-webkit-input-placeholder {
+        color: #ccc;
+        font-style: italic;
+        font-weight: normal;
+    }
+
+    .select-search-box input::-moz-placeholder {
+        color: #ccc;
+        font-style: italic;
+        font-weight: normal;
+    }
+
+    .select-search-box input:-moz-placeholder {
+        color: #ccc;
+        font-style: italic;
+        font-weight: normal;
+    }
+
+    .select-search-box input:-ms-input-placeholder {
+        color: #ccc;
+        font-style: italic;
+        font-weight: normal;
+    }
+
+    input[type='search']::-webkit-search-cancel-button, input[type='search']::-webkit-search-decoration {
+        -webkit-appearance: none;
+    }
+
+    .select-search-box__select {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-radius: 4px;
+        overflow: auto;
+        box-shadow: 0 7px 14px 0 rgba(50, 50, 93, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);
+        z-index: 100;
+        min-height: 300px;
+        min-width: 500px;
+        z-index: 1100000;
+    }
+
+    .select-search-box--multiple .select-search-box__select {
+        display: block;
+        position: static;
+        border-top: 1px solid #eee;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+        .select-search-box__select--display {
+            display: block;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+    .select-search-box__option {
+        font-size: 16px;
+        font-weight: 400;
+        color: #616b74;
+        padding: 15px 20px;
+        border-top: 1px solid #eee;
+        cursor: pointer;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        user-select: none;
+        padding-left: 15px !important;
+    }
+
+        .select-search-box__option:first-child {
+            border-top: none;
+        }
+
+        .select-search-box__option--hover, .select-search-box__option:hover {
+            background: #f4f7fa;
+        }
+
+        .select-search-box__option--selected {
+            background: #1ab394;
+            color: #fff;
+            border-top-color: #1ab394;
+        }
+
+            .select-search-box__option--selected:hover, .select-search-box__option--selected.select-search-box__option--hover {
+                background: #1ab394;
+                color: #fff;
+                border-top-color: #1ab394;
+            }
+
+        .select-search-box__group {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            position: relative;
+            // padding-left: 20px;
+            // padding-right: 20px;
+        }
+
+        .select-search-box__group-header {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 0 10px;
+            color: #647A93;
+            font-size: 13px;
+            // padding: 10px 15px;
+            // background-color: #DEEEEF;
+            border-radius: 3px;
+            font-family: 'roboto', sans-serif;
+        }
+
+.select-search-box__row
+{
+    padding-left: 0px;
+}     
+.searchbox__closebtn_1
+{
+    display: inline-block;
+    background-color: transparent;
+    outline: none;
+    font-size: 20px;
+    position: absolute;
+    top: 5.5px;
+    margin-top: 3px;
+    cursor: pointer !important;
+    // z-index: 100000 !important;
+    z-index: 8 !important;
+    right: 30px !important;
+    color: #455463;
+}
+.searchbox__closebtn_2
+{
+    display: inline-block;
+    background-color: transparent;
+    outline: none;
+    font-size: 20px;
+    position: absolute;
+    top: 5.5px;
+    margin-top: 3px;
+    cursor: pointer !important;
+    z-index: 8 !important;
+    right: 35px !important;
+    color: #455463;
+}
+.width-100
+{
+    width: 100% !important;
+}
+
+.select-search-box__options span:nth-child(2)
+{
+    color: #404040 !important;
+    font-size: 16px;
+    font-family: 'roboto', sans-serif;
+}
+.select-search-box__options span:nth-child(2)
+{
+    &::active
+    {
+        color: #000 !important;
+    }
+    &::hover
+    {
+        color: #000 !important;
+    }
+}
+
+.select-search-box__option--selected .select-search-box__options span:nth-child(2)
+{
+    color: #fff;
+}
+
+.or_data
+{
+    color: #647A93;
+    font-size: 15px;
+    font-family: 'roboto', sans-serif;
+}
+
