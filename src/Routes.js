@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 
 import ConfigSample from "./containers/ConfigSample";
-import InitialPage from "./containers/InitialPage";
+import InitialPage from "./containers/components/InitialPage";
 
 const Routes = () => {
   return (
