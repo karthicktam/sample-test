@@ -55,7 +55,9 @@ class Testing extends React.Component {
     this.props.onChange("");
     // this.setFocus.focus();
   };
+
   handleChange = value => {
+    console.log("valuennsndkffj", value);
     let selectedKey;
     Object.keys(this.props.listData).forEach(key => {
         if (this.props.listData[key] === value["value"]) {
@@ -69,7 +71,7 @@ class Testing extends React.Component {
         selectedValue: this.props.listData[selectedKey],
         showCancel: true,
       });
-      // this.props.onChange(selectedKey);
+      this.props.onChange(selectedKey);
     }
   };
 

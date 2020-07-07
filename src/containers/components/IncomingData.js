@@ -5,6 +5,7 @@ import NoWebHookData from "./NoWebHookData/NoWebHookData";
 import { Link } from "react-router-dom";
 
 import Testing from "../../components/cl-map-dropdown/Testing";
+import SelectedEvent from "./SelectedEvent";
 
 class Incomingdata extends Component {
   constructor(props) {
@@ -15,7 +16,9 @@ class Incomingdata extends Component {
       search: "", // process from here
       sample: this.props.eventList,
       filteredSample: this.props.eventList,
-      showCancel: false
+      showCancel: false,
+      selectedKey: "",
+      loadData: false // process
     };
 
     this.filterList = this.filterList.bind(this);
@@ -80,6 +83,19 @@ class Incomingdata extends Component {
     this.setState({ filteredSample: sample });
   } // process
 
+  selectedValueHandler = key => {
+    console.log(key, "keysjhshsssjkjs");
+    this.setState({
+      selectedKey: key
+    });
+  } // process
+
+  loadSampleScreen = () => {
+    this.setState({
+      loadData: true
+    });
+  } // process
+
     render() {
 
         let container;
@@ -103,6 +119,12 @@ class Incomingdata extends Component {
                        />
         }
 
+        let evt = { title: "Need for speed selected",
+                    description: "default sample data selected",
+                    tags: ["slec", "ted"],
+                    data: {name: "vicky"}
+                  };
+
         return (
           <div className="incoming-data">
             <div className="incoming-data__container">
@@ -123,79 +145,98 @@ class Incomingdata extends Component {
                 </div>
               </div>
 
-              <div>
-                <Testing
-                  listData={this.props.productList}
-                  value={this.props.selectedProduct}
-                  name="Select a product"
-                  className="boxshadow__searchsearchbox"
-                  onChange={this.onProductSelect}
-                  // selectedProperty={this.props.selectedProperty} // newly added
-                />
-              </div>
-
-              <div className="source-section_action">
-                <div className="source-section_action_dropdown">
-                  {/* <input type="text" className="source-dropdown" placeholder="All"></input> */}
-                  <input 
-                    type="text" 
-                    className="source-searchbar" 
-                    placeholder="search sample data"
-                    value={this.state.search}
-                    onChange={this.onChange}
-                  />
-
-                  {this.state.showCancel ? (
-                    <span style={{margin: '-20px', zIndex: '20', cursor: 'pointer'}} onClick={this.clearValue}>
-                      &times;
-                    </span>
-                  ) : null}
-                </div>
-
-                <span style={{fontSize: '3em'}}>
-                  <img
-                    src="../../assets/icons/filter.svg"
-                    alt="Filter"
-                    style={{height: "100px"}}
-                  />
-                  {/*<i className="fas fa-sort-alpha-down"></i>*/}
-                </span>
-              </div> {/* process */}
-
-              <div className="incoming-data__sbt-btn">
-                <button type="button" 
-                className="source_dark_btn" 
-                onClick={this.onConfirm}>Load more data</button>
-              </div>
-                {container}
-                <div className="incoming-data__submit">
-                {this.props.isLoading ? (
-                  <div className="incoming-data__loader-grid">
-                    <div className="incoming-data__loader"></div>
-                    <Link style={{ color: 'grey' }} onClick={this.stopFetching}>cancel</Link> {/* process */}
-                  </div>
-                ) : (
-                  <React.Fragment>
-                    <div className="incoming-data__sbt-btn">
-                      <button type="button" 
-                      className="source_dark_btn" 
-                      onClick={this.onConfirm} disabled={this.state.selectedEvent === undefined}>Next: Filter incoming data</button>
-                    </div>
-
-                    {/*<div className="incoming-data__load-btn">
-                      <button type="button" 
-                      className="get-more-sample" 
-                      onClick={this.props.getMoreSamples}>Load More Data</button>
-                    </div>*/}
-
-                    {/* this.isSourceFetchEnabled(this.props.source) ? <div className="incoming-data__load-btn">
-                      <button type="button" 
-                      className="get-more-sample" 
-                      onClick={this.fetchSamplesFromSource}>Fetch data from source</button>
-                    </div> : null */}
-                  </React.Fragment>
-                )}
-              </div>
+              {!this.state.loadData
+                  ?
+                    <React.Fragment>
+                      <SelectedEvent
+                        key={evt["title"]}
+                        selectedEvent={this.getSelectedEvent}
+                        event={evt}
+                        tags={evt["tags"]}
+                        selectedSampleData={true}
+                      />
+      
+                      <div className="incoming-event__view-json">
+                        <Link onClick={this.loadSampleScreen}>Load other sample data</Link>
+                      </div>
+                    </React.Fragment>
+                  :
+                    <React.Fragment>
+                      <div>
+                        <Testing
+                          listData={this.props.productList}
+                          value={this.state.selectedKey}
+                          name="Select a product"
+                          className="boxshadow__searchsearchbox"
+                          onChange={this.selectedValueHandler}
+                          // selectedProperty={this.props.selectedProperty} // newly added
+                        />
+                      </div>
+        
+                      <div className="source-section_action">
+                        <div className="source-section_action_dropdown">
+                          {/* <input type="text" className="source-dropdown" placeholder="All"></input> */}
+                          <input 
+                            type="text" 
+                            className="source-searchbar" 
+                            placeholder="search sample data"
+                            value={this.state.search}
+                            onChange={this.onChange}
+                          />
+        
+                          {this.state.showCancel ? (
+                            <span style={{margin: '-20px', zIndex: '20', cursor: 'pointer'}} onClick={this.clearValue}>
+                              &times;
+                            </span>
+                          ) : null}
+                        </div>
+        
+                        <span style={{fontSize: '3em'}}>
+                          <img
+                            src="../../assets/icons/filter.svg"
+                            alt="Filter"
+                            style={{height: "100px"}}
+                          />
+                          {/*<i className="fas fa-sort-alpha-down"></i>*/}
+                        </span>
+                      </div> {/* process */}
+        
+                      <div className="incoming-data__sbt-btn">
+                        <button type="button" 
+                        className="source_dark_btn" 
+                        onClick={this.onConfirm}>Load more data</button>
+                      </div>
+                        {container}
+                      <div className="incoming-data__submit">
+                        {this.props.isLoading ? (
+                          <div className="incoming-data__loader-grid">
+                            <div className="incoming-data__loader"></div>
+                            <Link style={{ color: 'grey' }} onClick={this.stopFetching}>cancel</Link> {/* process */}
+                          </div>
+                        ) : (
+                          <React.Fragment>
+                            <div className="incoming-data__sbt-btn">
+                              <button type="button" 
+                              className="source_dark_btn" 
+                              onClick={this.onConfirm} disabled={this.state.selectedEvent === undefined}>Next: Filter incoming data</button>
+                            </div>
+        
+                            {/*<div className="incoming-data__load-btn">
+                              <button type="button" 
+                              className="get-more-sample" 
+                              onClick={this.props.getMoreSamples}>Load More Data</button>
+                            </div>*/}
+        
+                            {/* this.isSourceFetchEnabled(this.props.source) ? <div className="incoming-data__load-btn">
+                              <button type="button" 
+                              className="get-more-sample" 
+                              onClick={this.fetchSamplesFromSource}>Fetch data from source</button>
+                            </div> : null */}
+                          </React.Fragment>
+                        )}
+                      </div>
+                    </React.Fragment>
+              }
             </div>
           </div>
         );
