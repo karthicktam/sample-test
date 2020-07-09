@@ -146,9 +146,13 @@ class Incomingdata extends Component {
                 </div>
               </div>
 
-              {this.state.loadData
+              {!this.state.loadData
                   ?
                     <React.Fragment>
+                      <div className="incoming-event__view-json">
+                        <Link onClick={this.loadSampleScreen}>Choose another sample data</Link>
+                      </div>
+
                       <SelectedEvent
                         key={evt["title"]}
                         selectedEvent={this.getSelectedEvent}
@@ -157,9 +161,9 @@ class Incomingdata extends Component {
                         selectedSampleData={true}
                       />
       
-                      <div className="incoming-event__view-json">
+                      {/*<div className="incoming-event__view-json">
                         <Link onClick={this.loadSampleScreen}>Load other sample data</Link>
-                      </div>
+                      </div>*/}
                     </React.Fragment>
                   :
                     <InitialPage 

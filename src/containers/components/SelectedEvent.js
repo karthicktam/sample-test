@@ -83,11 +83,17 @@ class SelectedEvent extends Component {
           onExit={this.closeFlyout}
         >
           <JsonViewer jsonData={this.props.event["data"]} />
-          <button 
-            className="incoming-event__button"
-            onClick={() => this.closeFlyoutForButton(this.props.event)}     
-          >Select this sample</button> {/* button added by me 
         </Flyout>*/}
+
+        <div className="incoming-sample__button-grid">
+          <div className="incoming-sample__button-grid__incoming-btn">
+            <button 
+              type="button" 
+              className="source_dark_btn" 
+              onClick={() => this.props.onNext()}
+            >Next: Filter incoming data</button>
+          </div>
+        </div>
       </div>
     );
   }

@@ -96,11 +96,11 @@ class InitialPage extends Component {
     });
   } // process
 
-  // loadSampleScreen = () => {
-  //   this.setState({
-  //     loadData: true
-  //   });
-  // } // process
+  showInitialScreenHandler = () => {
+    this.setState({
+      pageDecide: false
+    });
+  } // process
 
 
     render() {
@@ -180,14 +180,17 @@ class InitialPage extends Component {
             :
               <React.Fragment>
                 <div>
-                  <Testing
+                  <div className="incoming-event__view-json">
+                    <Link onClick={this.showInitialScreenHandler}>Choose another sample data</Link>
+                  </div>
+                  {/*<Testing
                     listData={this.props.productList}
                     value={this.state.selectedKey}
                     name="Select a product"
                     className="boxshadow__searchsearchbox"
                     onChange={this.selectedValueHandler}
                     // selectedProperty={this.props.selectedProperty} // newly added
-                  />
+                  />*/}
                 </div>
 
                 <div className="source-section_action">
@@ -232,11 +235,19 @@ class InitialPage extends Component {
                     </div>
                   ) : (
                     <React.Fragment>
-                      <div className="incoming-data__sbt-btn">
-                        <button type="button" 
-                        className="source_dark_btn" 
-                        onClick={this.onConfirm} disabled={this.state.selectedEvent === undefined}>Next: Filter incoming data</button>
-                      </div>
+                      {this.state.selectedEvent === undefined
+                          ?
+                            null
+                          :  
+                            <div className="incoming-data__sbt-btn">
+                              <button 
+                                type="button"
+                                className="source_dark_btn" 
+                                onClick={this.onConfirm} 
+                                disabled={this.state.selectedEvent === undefined}
+                              >Next: Filter incoming data</button>
+                            </div>
+                      }
 
                       {/*<div className="incoming-data__load-btn">
                         <button type="button" 
