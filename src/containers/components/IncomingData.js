@@ -173,6 +173,7 @@ class Incomingdata extends Component {
                       onNext={this.props.onNext}
                       onToggleFetchSampleLoader={this.props.onToggleFetchSampleLoader}
                       productList={this.props.productList}
+                      textUrl={"https://customerlabs.co"}
                     />
               }
             </div>

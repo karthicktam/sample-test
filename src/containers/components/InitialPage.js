@@ -18,7 +18,8 @@ class InitialPage extends Component {
       showCancel: false,
       selectedKey: "",
       // loadData: false, // process
-      pageDecide: false
+      pageDecide: false,
+      errorDecide: ""
     };
 
     this.filterList = this.filterList.bind(this);
@@ -58,7 +59,8 @@ class InitialPage extends Component {
 
   onConfirm = val => {
     this.setState({
-      pageDecide: true
+      pageDecide: true,
+      errorDecide: val
     });
   } // process
 
@@ -121,7 +123,7 @@ class InitialPage extends Component {
         } else {
           container = <NoWebHookData
                         isLoading={false}
-                        innerScreen={this.state.innerScreen}
+                        errorDecide={this.state.errorDecide}
                         url={"https://customerlabs.co"}
                        />
         }
@@ -136,6 +138,11 @@ class InitialPage extends Component {
           title: "Pull data from facebook",
           description: "Take the data you need to pull from facebook",
           buttonText: "Pull data from facebook"
+        },
+        {
+          title: "Triger live data",
+          description: "Send the data to this belw webhook URL to trigger",
+          buttonText: "Triger live data"
         }
       ];
 
@@ -148,6 +155,12 @@ class InitialPage extends Component {
                         <div>
                           <p>{data.title}</p>
                           <p>{data.description}</p>
+                          {this.props.textUrl
+                            ?
+                              <span>{this.props.textUrl}</span>
+                            :
+                              null
+                          }
                         </div>
 
                         <div className="incoming-data__sbt-btn">
@@ -161,7 +174,7 @@ class InitialPage extends Component {
                     ))
                   }
 
-                  <div>
+                  {/*<div>
                     <div>
                       <p>Triger live data</p>
                       <p>Send the data to this belw webhook URL to trigger</p>
@@ -175,7 +188,7 @@ class InitialPage extends Component {
                         onClick={() => this.onConfirm("Triger live data")} 
                       >Triger live data</button>
                     </div>
-                  </div>
+                  </div>*/}
               </React.Fragment>
             :
               <React.Fragment>

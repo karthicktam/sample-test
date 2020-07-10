@@ -14,7 +14,7 @@ class NoWebHookDataBodyConatiner extends React.Component {
     return (
       <div className="nodatacontainer">
         <div className="nodatacontainer__mapping-data1">
-          {!this.props.isLoading && this.props.innerScreen === "facebook" 
+          {!this.props.isLoading && this.props.errorDecide === "Pull data from facebook" 
             ? 
               <div>
                 <h1 className="nodatacontainer__title">There is no pull data available!</h1>
@@ -32,7 +32,7 @@ class NoWebHookDataBodyConatiner extends React.Component {
                   </div>
                 </div>
               </div>
-            : !this.props.isLoading && this.props.innerScreen === "default"  
+            : !this.props.isLoading && this.props.errorDecide === "Triger live data"  
                 ?
                   <div>
                     <h1 className="nodatacontainer__title">There is no live data available!</h1>
