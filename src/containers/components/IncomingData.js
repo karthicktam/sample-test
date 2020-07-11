@@ -21,9 +21,6 @@ class Incomingdata extends Component {
       // selectedKey: "",
       loadData: false // process
     };
-
-    // this.filterList = this.filterList.bind(this);
-    // this.onChange = this.onChange.bind(this); // process
   }
 
   getSelectedEvent = event => {
@@ -99,27 +96,6 @@ class Incomingdata extends Component {
 
     render() {
 
-        // let container;
-
-        // if (this.props.sampleRecords.length > 0) {
-        //   container = <div>
-        //                 {this.state.filteredSample.map(event => (
-        //                   <IncomingEvent
-        //                     key={event["title"]}
-        //                     selectedEvent={this.getSelectedEvent}
-        //                     event={event}
-        //                     tags={event["tags"]}
-        //                   />
-        //                 ))}
-        //               </div>
-        // } else {
-        //   container = <NoWebHookData
-        //                 isLoading={false}
-        //                 innerScreen={this.state.innerScreen}
-        //                 url={"https://customerlabs.co"}
-        //                />
-        // }
-
         let evt = { title: "Need for speed selected",
                     description: "default sample data selected",
                     tags: ["slec", "ted"],
@@ -160,10 +136,6 @@ class Incomingdata extends Component {
                         tags={evt["tags"]}
                         selectedSampleData={true}
                       />
-      
-                      {/*<div className="incoming-event__view-json">
-                        <Link onClick={this.loadSampleScreen}>Load other sample data</Link>
-                      </div>*/}
                     </React.Fragment>
                   :
                     <InitialPage 

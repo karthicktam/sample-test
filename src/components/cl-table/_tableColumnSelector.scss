@@ -1,0 +1,182 @@
+@import "../../assets/scss/variables.scss";
+
+.columnselectdropdownbox {
+  position: relative;
+  top: 0px;
+  width: 50px;
+  height: 30px;
+  margin: 0px 10px;
+
+  &__btn {
+    cursor: pointer;
+    height: 30px;
+    background-color: rgb(242, 251, 249);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    outline: none;
+    z-index: 1;
+  }
+}
+.dropdownmenu {
+  cursor: pointer;
+  padding: 10px 0px;
+  user-select: none;
+
+  &__checkbox {
+    cursor: pointer;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}
+
+#columnselectdropdownbox__img {
+  background: {
+    color: rgb(242, 251, 249);
+    image: url("../../assets/icons/Img/column.png");
+    position: 4px 4px;
+    repeat: no-repeat;
+  }
+  height: 30px;
+  width: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+}
+.cbdropdown {
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  background-color: #ffffff;
+  min-width: 180px;
+  overflow: auto;
+  border-radius: 5px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  li {
+    color: black;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__list:hover {
+    background-color: #ddd;
+  }
+}
+
+// <--------------------------------------------pagenation---------------------------------------------->
+
+.pagination {
+  display: flex;
+  margin: 20px 0px 20px 0px;
+  justify-content: space-between;
+  &__rowselector {
+    border: 1px solid;
+    border-radius: 3px;
+    outline: none;
+    width: 60px;
+    height: 40px;
+    padding-left: 15px;
+    appearance: button;
+    -moz-appearance: button;
+    -webkit-appearance: button;
+    background-color: $background-green;
+    background: {
+      image: url("../../assets/icons/cl-down-arrow.svg");
+      repeat: no-repeat;
+      position: 40px 16px;
+      size: 10px;
+    }
+    cursor: pointer;
+  }
+
+  &__previous {
+    border: 1px solid;
+    border-radius: 3px;
+    outline: none;
+    width: 40px;
+    height: 40px;
+    background: {
+      color: $background-green;
+      image: url("../../assets/icons/cl-left-arrow.svg");
+      repeat: no-repeat;
+      size: 35px;
+      position: 2px 1px;
+    }
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
+
+  &__next {
+    border: 1px solid;
+    border-radius: 3px;
+    outline: none;
+    width: 40px;
+    height: 40px;
+    background: {
+      // color: #f2fbf9;
+      color: $background-green;
+      image: url("../../assets/icons/cl-right-arrow.svg");
+      repeat: no-repeat;
+      size: 35px;
+      position: 2px 1px;
+    }
+    margin-left: 15px;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
+}
+
+/* >>----------------------------------------------->>
+
+====================Media--Query======================
+
+>>----------------------------------------------->> */
+
+@media screen and (max-width: 675px) {
+  .columnselectdropdownbox__btn {
+    top: 5px;
+    right: 40px;
+  }
+  .cbdropdown {
+    top: 55px;
+  }
+  .pagination {
+    margin: 20px 0 20px 15px;
+
+    &--nextbtn {
+      margin-left: 62%;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .columnselectdropdownbox__btn {
+    top: 5px;
+    right: 10px;
+  }
+
+  .cbdropdown {
+    top: 50px;
+  }
+  .pagination {
+    margin: 20px 0 20px 10px;
+
+    &--nextbtn {
+      margin-left: 47%;
+    }
+  }
+}

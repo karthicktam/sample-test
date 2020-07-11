@@ -1,0 +1,19 @@
+@import "../../assets/scss/variables.scss";
+
+.on-state {
+  width: 12px;
+  height: 12px;
+  background-color: $primary-green-1;
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0px 10px 0px 20px;
+}
+
+.off-state {
+  width: 12px;
+  height: 12px;
+  background-color: #e0dfe0;
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0px 10px 0px 20px;
+}

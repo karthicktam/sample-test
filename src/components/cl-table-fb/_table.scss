@@ -1,0 +1,250 @@
+@import "../../assets/scss/variables.scss";
+
+.tableflex {
+  display: flex;
+  margin: 30px 0;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  min-height: 35px;
+
+  &--innerflex {
+    display: flex;
+    justify-self: flex-end;
+  }
+  &__sbar1 {
+    height: 10px;
+    width: 250px;
+    border: 1px solid;
+    border-radius: 3px;
+    outline: none;
+    padding: 15px 10px 15px 35px;
+    font-weight: 600;
+    font-size: 15px;
+    background-image: url("../../assets/icons/cl-search.png");
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+    background-size: 24px;
+  }
+  &__filter-button {
+    background: {
+      color: rgba(0, 0, 0, 0);
+      image: url(../../assets/icons/cl-filter.svg);
+      repeat: no-repeat;
+      size: 20px;
+      position: 4px 5px;
+    }
+    border: none;
+    width: 30px;
+    height: 30px;
+    padding: 12px;
+    margin: 0 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+    cursor: pointer;
+    outline: none;
+  }
+
+  &__refresh-img {
+    width: 15px;
+    height: 15px;
+    background: {
+      image: url("../../assets/icons/Img/refresh.png");
+      repeat: no-repeat;
+      position: 3.5px 5px;
+    }
+    margin: 0px 10px;
+  }
+  &__dropdown {
+    justify-content: baseline;
+  }
+}
+.tableflex--withoutseachbox {
+  justify-content: flex-end;
+}
+.clui-table-header-icon {
+  cursor: pointer;
+  img {
+    position: relative;
+    top: 3px;
+    width: 17px;
+    height: 17px;
+  }
+}
+.headericon {
+  cursor: pointer;
+}
+.tablewrapper {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  background-color: white;
+  margin: {
+    bottom: 40px;
+  }
+  box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 15px;
+}
+tbody {
+  max-width: 1750px;
+}
+th {
+  top: 0px;
+  width: 300px;
+  height: 64px;
+  background: white;
+  z-index: 1;
+  cursor: default;
+  user-select: none;
+  position: sticky;
+  border: none;
+  padding: 20px 20px 20px 0px;
+  // padding: 20px 130px 20px 0px;
+  text-align: left;
+  white-space: nowrap;
+}
+tr {
+  border: {
+    bottom: 0.5px solid gray;
+    right: 0.5px solid gray;
+  }
+}
+td {
+  padding: 15px 0 16px 0px;
+  text-align: left;
+  height: 64px;
+  white-space: nowrap;
+}
+
+.text-wrap {
+  width: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.checkboxcontainer {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  user-select: none;
+
+  &__checkbox {
+    position: absolute;
+    visibility: hidden;
+    height: 20px;
+    width: 20px;
+  }
+
+  &__customcb {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 10px;
+    width: 15px;
+    background-color: #eee;
+    outline: solid $primary-green-1;
+    outline-offset: 2px;
+    outline-width: 3px;
+  }
+
+  &__bodycheckbox {
+    position: absolute;
+    visibility: hidden;
+    height: 20px;
+    width: 20px;
+  }
+
+  &__custombcb {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 6px;
+    width: 10px;
+    background-color: #eee;
+    outline: solid black;
+    outline-offset: 2px;
+    outline-width: 1px;
+  }
+}
+
+.checkboxcontainer__checkbox:hover ~ .checkboxcontainer__customcb {
+  background-color: #ddd;
+}
+.checkboxcontainer__checkbox:checked ~ .checkboxcontainer__customcb {
+  background-color: $primary-green-1;
+}
+
+.checkboxcontainer__bodycheckbox:hover ~ .checkboxcontainer__custombcb {
+  background-color: #ddd;
+}
+.checkboxcontainer__bodycheckbox:checked ~ .checkboxcontainer__custombcb {
+  background-color: black;
+}
+
+#tableflex__refresh-button {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  height: 30px;
+  width: 30px;
+  background-color: rgb(242, 251, 249);
+  outline: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.tableoptions {
+  width: 500px;
+}
+
+// -------------------------------------------------------->
+
+// =================MEDIA-QUERIES===========================
+
+// -------------------------------------------------------->
+
+@media screen and (max-width: 600px) {
+  .tableflex {
+    &--innerflex {
+      flex-direction: column;
+      justify-content: space-around;
+      height: 150px;
+    }
+  }
+  .tableflex__sbar1 {
+    width: 170px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .tableflex {
+    &--innerflex {
+      flex-direction: column;
+      justify-content: space-around;
+      height: 150px;
+    }
+  }
+  .tableflex__sbar1 {
+    width: 150px;
+  }
+}
+
+/* >>-------------------------------------------------->>
+
+====================MOZILLA-FIREFOX======================
+
+>>-------------------------------------------------->> */
+
+@-moz-document url-prefix() {
+  th {
+    position: initial;
+  }
+}

@@ -2,9 +2,104 @@ import React, { Component } from "react";
 import IncomingEvent from "./IncomingEvent";
 import NoWebHookData from "./NoWebHookData/NoWebHookData";
 import { Link } from "react-router-dom";
+import Table from "../../components/cl-table-fb/Table";
 
-import Testing from "../../components/cl-map-dropdown/Testing";
+class Facebook extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      active_columns: [
+        {
+          name: "Form Name",
+          field: "name",
+          sortable: true,
+          showColumn: true,
+          // columnType: "link",
+          disabled: true,
+          "text-overflow": "ellipsis",
+          "white-space": "nowrap",
+          overflow: "hidden",
+          colWidth: { width: "890px", pwidth: "160px" }
+        },
+        {
+          name: "Action",
+          field: "Apply this form",
+          columnType: "link",
+          disabled: true,
+          showColumn: true,
+          callback: this.fetchFb,
+          "text-overflow": "ellipsis",
+          "white-space": "nowrap",
+          overflow: "hidden",
+          // colWidth: { width: "890px", pwidth: "160px" }
+        }
+      ]
+    }
+  };
 
+  fetchFb = (formId) => {
+    console.log("formIdformIdformId", formId);
+    this.props.fetchFacebookSample(formId);
+  }
+ 
+  render() {
+    return (
+      <React.Fragment>
+        <div className="source-section_heading">
+          <h1 className="incoming-section_heading__h1">Fetching samples from Facebook 
+            <div className="incoming-data__load-btn" style={{display: "inline-block", "float": "right"}}>
+              <button type="button" className="get-more-sample" onClick={this.props.cancel}>Stop Fetching</button>
+            </div>
+          </h1>
+          <h1 className="incoming-section_heading__p">
+              Select any one of the form to fetch sample data
+          </h1>
+        </div>
+        <div>
+        { this.props.isLoading ? (
+                  <div className="incoming-data__loader-grid">
+                    <div className="incoming-data__loader"></div>
+                  </div>
+          ) : ( 
+            <div>
+              <Table
+                columns={this.state.active_columns}
+                items={this.props.data}
+                onRefresh={this.onRefresh}
+                searchable={false}
+                refreshable={false}
+                selectedTab={this.props.selectedTab} // new
+              />
+              {/*this.props.data.map(form => (
+                <div className="incoming-event">
+                  <label
+                    style={{ width: "100%", cursor: "pointer" }}
+                    htmlFor={`incoming${form["name"]}`}
+                  >
+                    <div className="incoming-event__flex">
+                      <div className="incoming-event__inner-flex">
+                        <div className="incoming-event__radio-section">
+                          {/* <span className="incoming-event__radio"></span>
+                        </div>
+                        <div>
+                          <h4>{form["name"]}</h4>
+                        </div>
+                      </div>
+                      <div className="incoming-event__view-json">
+                        <Link onClick={() => { this.props.fetchFacebookSample(form["id"])} }>Fetch data from this form</Link>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              ))*/}
+            </div>
+          ) 
+        }
+        </div>
+    </React.Fragment>
+    );
+  }
+}
 
 class InitialPage extends Component {
   constructor(props) {
@@ -17,9 +112,13 @@ class InitialPage extends Component {
       filteredSample: this.props.eventList,
       showCancel: false,
       selectedKey: "",
-      // loadData: false, // process
       pageDecide: false,
-      errorDecide: ""
+      errorDecide: "",
+      loadDataEnable: false,
+      data: [
+        {name: "vendata", id: "7393892nsmnxnmn"},
+        {name: "conman", id: "37sjhusjskjmm"},
+      ]
     };
 
     this.filterList = this.filterList.bind(this);
@@ -30,34 +129,53 @@ class InitialPage extends Component {
     this.setState({ selectedEvent: event });
   };
 
+  fetchSamplesFromSource = () => {
+    this.setState({innerScreen: this.props.source});
+    this.props.getSampleFromSource();
+  }
+
   stopFetching = () => {
     this.props.onToggleFetchSampleLoader(false);
   } // process
 
-  // onConfirm = () => {
-  //   if (Object.keys(this.props.selectedSampleData).length === 0) {
-  //     this.props.onNext(this.state.selectedEvent, false);
-  //   } else {
-  //     // confirmAlert({
-  //     //   title: 'Do you want to change the sample data?',
-  //     //   message: "Filter and mapping steps required to be updated again",
-  //     //   buttons: [
-  //     //     {
-  //     //       label: "Yes",
-  //     //       onClick: () => {
-  //     //         this.props.onNext(this.state.selectedEvent, true);
-  //     //       }
-  //     //     },
-  //     //     { label: "No", onClick: () => {} }
-  //     //   ],
-  //     //   childrenElement: () => <div />,
-  //     //   closeOnEscape: false,
-  //     //   closeOnClickOutside: false
-  //     // })
-  //   }
-  // }; // newly added
+  onConfirm = () => {
+    if (Object.keys(this.props.selectedSampleData).length === 0) {
+      this.props.onNext(this.state.selectedEvent, false);
+    } else {
+      // confirmAlert({
+      //   title: 'Do you want to change the sample data?',
+      //   message: "Filter and mapping steps required to be updated again",
+      //   buttons: [
+      //     {
+      //       label: "Yes",
+      //       onClick: () => {
+      //         this.props.onNext(this.state.selectedEvent, true);
+      //       }
+      //     },
+      //     { label: "No", onClick: () => {} }
+      //   ],
+      //   childrenElement: () => <div />,
+      //   closeOnEscape: false,
+      //   closeOnClickOutside: false
+      // })
+    }
+  }; // newly added
 
-  onConfirm = val => {
+  onConfirmHandler = val => {
+    if (val === "Triger live data") {
+      this.setState({
+        loadDataEnable: true
+      });
+    } else {
+      this.setState({
+        loadDataEnable: false
+      });
+    }
+
+    if (val === "Pull data from facebook") {
+      this.setState({innerScreen: this.props.source});
+    }
+
     this.setState({
       pageDecide: true,
       errorDecide: val
@@ -104,6 +222,34 @@ class InitialPage extends Component {
     });
   } // process
 
+  onCancel = () => {
+    this.setState({
+      innerScreen: "default"
+    })
+  }
+
+  sourceBaseScreen = (source) => {
+    switch(source){
+      case "facebook":
+        return <Facebook 
+                  // data={this.props.facebookForms} 
+                  data={this.state.data}
+                  pagination={this.props.pagination} 
+                  isLoading={this.props.isLoading} 
+                  cancel={this.onCancel} 
+                  fetchFacebookSample={this.fetchSampleFromFacebook}
+                />
+      default:
+        return null
+    }
+  }
+
+  fetchSampleFromFacebook = (form_id) => {
+    this.setState({innerScreen: "default"})
+    // this.props.onToggleFetchSampleLoader(true);
+    // this.props.onFetchSampleFromFB(form_id);
+    // this.props.getMoreSamples();
+  }
 
     render() {
 
@@ -151,7 +297,7 @@ class InitialPage extends Component {
               ?
                 <React.Fragment>
                   { array.map(data => (
-                      <div>
+                      <div key={data.buttonText}>
                         <div>
                           <p>{data.title}</p>
                           <p>{data.description}</p>
@@ -167,28 +313,12 @@ class InitialPage extends Component {
                           <button 
                             type="button" 
                             className="source_dark_btn" 
-                            onClick={() => this.onConfirm(data.buttonText)} 
+                            onClick={() => this.onConfirmHandler(data.buttonText)} 
                           >{data.buttonText}</button>
                         </div>
                       </div>
                     ))
                   }
-
-                  {/*<div>
-                    <div>
-                      <p>Triger live data</p>
-                      <p>Send the data to this belw webhook URL to trigger</p>
-                      <span>https://customerlabs.co</span>
-                    </div>
-
-                    <div className="incoming-data__sbt-btn">
-                      <button 
-                        type="button" 
-                        className="source_dark_btn" 
-                        onClick={() => this.onConfirm("Triger live data")} 
-                      >Triger live data</button>
-                    </div>
-                  </div>*/}
               </React.Fragment>
             :
               <React.Fragment>
@@ -196,86 +326,85 @@ class InitialPage extends Component {
                   <div className="incoming-event__view-json">
                     <Link onClick={this.showInitialScreenHandler}>Choose another sample data</Link>
                   </div>
-                  {/*<Testing
-                    listData={this.props.productList}
-                    value={this.state.selectedKey}
-                    name="Select a product"
-                    className="boxshadow__searchsearchbox"
-                    onChange={this.selectedValueHandler}
-                    // selectedProperty={this.props.selectedProperty} // newly added
-                  />*/}
                 </div>
+                
+                { this.state.innerScreen === "default" 
+                    ?
+                      <React.Fragment>
+                        <div className="source-section_action">
+                          <div className="source-section_action_dropdown">
+                            <input 
+                              type="text" 
+                              className="source-searchbar" 
+                              placeholder="search sample data"
+                              value={this.state.search}
+                              onChange={this.onChange}
+                            />
 
-                <div className="source-section_action">
-                  <div className="source-section_action_dropdown">
-                    {/* <input type="text" className="source-dropdown" placeholder="All"></input> */}
-                    <input 
-                      type="text" 
-                      className="source-searchbar" 
-                      placeholder="search sample data"
-                      value={this.state.search}
-                      onChange={this.onChange}
-                    />
+                            {this.state.showCancel ? (
+                              <span style={{margin: '-20px', zIndex: '20', cursor: 'pointer'}} onClick={this.clearValue}>
+                                &times;
+                              </span>
+                            ) : null}
+                          </div>
 
-                    {this.state.showCancel ? (
-                      <span style={{margin: '-20px', zIndex: '20', cursor: 'pointer'}} onClick={this.clearValue}>
-                        &times;
-                      </span>
-                    ) : null}
-                  </div>
+                          <span style={{fontSize: '3em'}}>
+                            <img
+                              src="../../assets/icons/filter.svg"
+                              alt="Filter"
+                              style={{height: "100px"}}
+                            />
+                            {/*<i className="fas fa-sort-alpha-down"></i>*/}
+                          </span>
+                        </div> {/* process */}
 
-                  <span style={{fontSize: '3em'}}>
-                    <img
-                      src="../../assets/icons/filter.svg"
-                      alt="Filter"
-                      style={{height: "100px"}}
-                    />
-                    {/*<i className="fas fa-sort-alpha-down"></i>*/}
-                  </span>
-                </div> {/* process */}
-
-                <div className="incoming-data__sbt-btn">
-                  <button type="button" 
-                  className="source_dark_btn" 
-                  onClick={this.onConfirm}>Load more data</button>
-                </div>
-                  {container}
-                <div className="incoming-data__submit">
-                  {this.props.isLoading ? (
-                    <div className="incoming-data__loader-grid">
-                      <div className="incoming-data__loader"></div>
-                      <Link style={{ color: 'grey' }} onClick={this.stopFetching}>cancel</Link> {/* process */}
-                    </div>
-                  ) : (
-                    <React.Fragment>
-                      {this.state.selectedEvent === undefined
-                          ?
-                            null
-                          :  
-                            <div className="incoming-data__sbt-btn">
-                              <button 
-                                type="button"
+                        {this.state.loadDataEnable
+                            ?
+                              <div className="incoming-data__sbt-btn">
+                                <button type="button" 
                                 className="source_dark_btn" 
-                                onClick={this.onConfirm} 
-                                disabled={this.state.selectedEvent === undefined}
-                              >Next: Filter incoming data</button>
+                                onClick={this.onConfirm}>Load more data</button>
+                              </div>
+                            :
+                              null
+                        }
+
+                          {container}
+                        <div className="incoming-data__submit">
+                          {this.props.isLoading ? (
+                            <div className="incoming-data__loader-grid">
+                              <div className="incoming-data__loader"></div>
+                              <Link style={{ color: 'grey' }} onClick={this.stopFetching}>cancel</Link> {/* process */}
                             </div>
-                      }
+                          ) : (
+                            <React.Fragment>
+                                <div className="incoming-data__sbt-btn">
+                                  <button 
+                                    type="button"
+                                    className="source_dark_btn" 
+                                    onClick={this.onConfirm} 
+                                    disabled={this.state.selectedEvent === undefined}
+                                  >Next: Filter incoming data</button>
+                                </div>
 
-                      {/*<div className="incoming-data__load-btn">
-                        <button type="button" 
-                        className="get-more-sample" 
-                        onClick={this.props.getMoreSamples}>Load More Data</button>
-                      </div>*/}
+                              {/*<div className="incoming-data__load-btn">
+                                <button type="button" 
+                                className="get-more-sample" 
+                                onClick={this.props.getMoreSamples}>Load More Data</button>
+                              </div>*/}
 
-                      {/* this.isSourceFetchEnabled(this.props.source) ? <div className="incoming-data__load-btn">
-                        <button type="button" 
-                        className="get-more-sample" 
-                        onClick={this.fetchSamplesFromSource}>Fetch data from source</button>
-                      </div> : null */}
-                    </React.Fragment>
-                  )}
-                </div>
+                              {/* this.isSourceFetchEnabled(this.props.source) ? <div className="incoming-data__load-btn">
+                                <button type="button" 
+                                className="get-more-sample" 
+                                onClick={this.fetchSamplesFromSource}>Fetch data from source</button>
+                              </div> : null */}
+                            </React.Fragment>
+                          )}
+                        </div>
+                      </React.Fragment>  
+                    :
+                      this.sourceBaseScreen("facebook")
+                  }      
             </React.Fragment>
         );
     }

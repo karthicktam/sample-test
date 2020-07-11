@@ -1,0 +1,177 @@
+@import "../../assets/scss/variables.scss";
+
+.toogleswitch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 25px;
+  left: -10px;
+  &__loader {
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    border: {
+      width: 5px;
+      style: solid;
+      radius: 50%;
+      color: $primary-green-1 transparent $primary-green-1 transparent;
+    }
+    animation: loader 1.2s linear infinite;
+  }
+}
+.toogleswitch input {
+  display: none;
+}
+.toogleswitch__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 5px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: grey;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.toogleswitch__slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 6px;
+  bottom: 18%;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+input[type="checkbox"]:checked + .toogleswitch__slider {
+  background-color: $primary-green-1;
+}
+input[type="checkbox"]:checked + .toogleswitch__slider:before {
+  -webkit-transform: translateX(37px);
+  -ms-transform: translateX(37px);
+  transform: translateX(37px);
+}
+.on {
+  transition: all 400ms;
+  position: absolute;
+  top: 2px;
+  right: 78px;
+  font-size: 11px;
+  opacity: 0;
+  color: rgba(0, 0, 0, 0);
+  font-weight: 600;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+.off {
+  transition: all 400ms;
+  position: absolute;
+  top: 2px;
+  left: 33px;
+  font-size: 11px;
+  color: white;
+  font-weight: 600;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  opacity: 1;
+}
+input[type="checkbox"]:checked + .toogleswitch__slider .on {
+  transform: translateX(40px);
+  color: white;
+  opacity: 1;
+}
+input[type="checkbox"]:checked + .toogleswitch__slider .off {
+  transform: translateX(40px);
+  color: rgba(0, 0, 0, 0);
+  opacity: 0;
+}
+.toogleswitch__slider.slider--round {
+  border-radius: 34px;
+}
+.toogleswitch__slider.slider--round:before {
+  border-radius: 50%;
+  margin-bottom: 0.5px;
+}
+@media screen and (max-width: 800px) {
+  .toogleswitch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 25px;
+    left: -10px;
+  }
+}
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// component changes for the overlay design 
+// style changed by subbu. 
+.react-confirm-alert-body {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 700px !important;
+  padding: 30px;
+  text-align: left;
+  background: #fff;
+  border-radius: 0px !important;
+  box-shadow: 0 20px 75px rgba(0, 0, 0, 0.13);
+  color: #666;
+}
+
+.react-confirm-alert-button-group {
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 50px !important;
+  margin-left: -30px;
+  margin-right: -30px;
+  margin-bottom: -30px;
+  background-color: #BDE9E0 !important;
+  padding: 20px 0px !important;
+  border-radius: 0px;
+}
+.react-confirm-alert-body > h1 {
+  margin-top: 20px !important;
+  font-size: 21px !important;
+  font-weight: 500 !important;
+  color: #000 !important;
+  margin-bottom: 7px;
+}
+.react-confirm-alert-button-group > button:nth-child(1) {
+  outline: none;
+  background: #FF0000;
+  border: none;
+  display: inline-block;
+  padding: 6px 18px;
+  color: #eee;
+  margin-right: 10px;
+  border-radius: 0px !important;
+  font-size: 15px !important;
+  cursor: pointer;
+  margin-left: 30px !important;
+  font-weight: 600;
+}
+.react-confirm-alert-button-group > button:nth-child(2)
+{
+  outline: none;
+  border: none;
+  background: none !important;
+  display: inline-block;
+  color: #000;
+  margin-right: 10px;
+  font-size: 15px !important;
+  cursor: pointer;
+  text-decoration: underline !important;
+  margin-left: 15px !important;
+}
+
